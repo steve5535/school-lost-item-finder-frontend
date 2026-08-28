@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>분실물 상세</title></head>
+<body><header><a href="/index.html">학교 분실물 관리</a></header><main>
+<a href="/index.html">← 목록으로</a>
+<article id="item-detail" data-item-id=""><div id="item-image">분실물 사진</div><h1 id="item-name">분실물 이름</h1>
+<dl><dt>찾은 장소</dt><dd id="item-place">-</dd><dt>특징</dt><dd id="item-detail-text">-</dd><dt>등록된 시간</dt><dd id="item-sign-up-at">-</dd></dl>
+<button id="take-item-button" type="button">분실물 가져가기</button></article>
+<dialog id="take-item-dialog"><form method="dialog" id="take-item-form"><h2>분실물 가져가기</h2>
+<label for="student-number">학번</label><input id="student-number" name="studentNumber" type="number" required>
+<label for="student-name">이름</label><input id="student-name" name="studentName" type="text" required>
+<button type="submit" value="confirm">완료</button><button type="submit" value="cancel">취소</button></form></dialog>
+</main></body></html>

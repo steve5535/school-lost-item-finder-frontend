@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 로그인</title>
+  </head>
+  <body>
+    <main>
+      <a href="/index.html">학교 분실물 관리</a>
+      <section>
+        <h1>관리자 로그인</h1>
+        <form id="admin-login-form">
+          <label for="username">관리자 ID</label
+          ><input
+            id="username"
+            name="userName"
+            type="text"
+            autocomplete="username"
+            required
+          />
+          <label for="password">비밀번호</label
+          ><input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button type="submit">로그인</button>
+        </form>
+        <p id="login-error" role="alert" hidden></p>
+      </section>
+    </main>
+  </body>
+</html>

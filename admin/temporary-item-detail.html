@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 - 임시 분실물 상세</title>
+  </head>
+  <body>
+    <header><a href="/admin/index.html">학교 분실물 관리 · 관리자</a></header>
+    <main>
+      <a href="/admin/temporary-items.html">← 임시 저장소</a>
+      <article id="temporary-item-detail" data-item-id="">
+        <div id="item-image">분실물 사진</div>
+        <h1 id="item-name">분실물 이름</h1>
+        <dl>
+          <dt>찾은 장소</dt>
+          <dd id="item-place">-</dd>
+          <dt>특징</dt>
+          <dd id="item-detail-text">-</dd>
+          <dt>등록된 시간</dt>
+          <dd id="item-sign-up">-</dd>
+          <dt>승인 상태</dt>
+          <dd id="item-state">대기 중</dd>
+        </dl>
+        <div>
+          <button id="accept-button" type="button">수락</button
+          ><button id="decline-button" type="button">거절</button
+          ><button id="delete-button" type="button">삭제</button>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
