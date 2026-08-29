@@ -1,0 +1,122 @@
+/* 일반 사용자 */
+
+#search-form {
+  max-width: 720px;
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+#search-form label {
+  grid-column: 1 / -1;
+}
+
+#search-form button,
+#admin-search-form button {
+  min-width: 76px;
+}
+
+#item-list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.item-card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(25, 31, 43, 0.11);
+}
+
+.item-card a {
+  display: block;
+  padding: 12px;
+}
+
+.item-card h3 {
+  margin: 15px 3px 4px;
+}
+
+.item-card p {
+  margin: 0 3px;
+  font-size: 13px;
+}
+
+.item-card p + p {
+  margin-top: 2px;
+}
+
+#item-detail {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+#item-detail .item-image {
+  min-height: 420px;
+  margin-bottom: 28px;
+}
+
+#item-detail h1 {
+  font-size: 32px;
+}
+
+#take-item-button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+#temporary-item-register-form {
+  max-width: 720px;
+  margin: 28px auto 0;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+#temporary-item-register-form button {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  #item-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #search-form {
+    grid-template-columns: 1fr;
+  }
+
+  #item-list {
+    grid-template-columns: 1fr;
+  }
+
+  #item-detail,
+  #temporary-item-register-form {
+    padding: 16px;
+  }
+
+  #item-detail .item-image {
+    min-height: 280px;
+  }
+}

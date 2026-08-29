@@ -1,11 +1,34 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>분실물 등록</title></head>
-<body><header><a href="/index.html">학교 분실물 관리</a></header><main>
-<a href="/index.html">← 목록으로</a><h1>분실물 등록</h1><p>등록된 분실물은 관리자 확인 후 정식 분실물로 등록됩니다.</p>
-<form id="temporary-item-register-form">
-<label for="item-name">분실물 이름</label><input id="item-name" name="itemName" type="text" required>
-<label for="item-detail">분실물 특징</label><textarea id="item-detail" name="itemDetail" required></textarea>
-<label for="item-place">찾은 장소</label><input id="item-place" name="itemPlace" type="text" required>
-<label for="item-img">분실물 사진</label><input id="item-img" name="itemImg" type="text" placeholder="이미지 경로 또는 URL">
-<button type="submit">등록하기</button><a href="/index.html">취소</a>
-</form></main></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>분실물 등록</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header><a href="/index.html">학교 분실물 관리</a></header>
+    <main>
+      <a href="/index.html">← 목록으로</a>
+      <h1>분실물 등록</h1>
+      <p>등록된 분실물은 관리자 확인 후 정식 분실물로 등록됩니다.</p>
+      <form id="temporary-item-register-form">
+        <label for="item-name">분실물 이름</label
+        ><input id="item-name" name="itemName" type="text" required />
+        <label for="item-detail">분실물 특징</label
+        ><textarea id="item-detail" name="itemDetail" required></textarea>
+        <label for="item-place">찾은 장소</label
+        ><input id="item-place" name="itemPlace" type="text" required />
+        <label for="item-img">분실물 사진</label
+        ><input
+          id="item-img"
+          name="itemImg"
+          type="text"
+          placeholder="이미지 경로 또는 URL"
+        />
+        <button type="submit">등록하기</button><a href="/index.html">취소</a>
+      </form>
+    </main>
+  </body>
+</html>
