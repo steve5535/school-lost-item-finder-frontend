@@ -6,9 +6,16 @@
     <title>분실물 상세</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <script src="../js/common.js" defer></script>
+    <script src="../js/user/item-detail.js" defer></script>
   </head>
   <body>
-    <header><a href="/index.html">학교 분실물 관리</a></header>
+    <header>
+      <a href="/index.html" class="site-logo">
+        <img src="/images/school-logo.png" alt="학교 로고" />
+        <span>창원 문성고등학교 분실물 관리</span>
+      </a>
+    </header>
     <main>
       <a href="/index.html">← 목록으로</a>
       <article id="item-detail" data-item-id="">
@@ -27,17 +34,17 @@
       <dialog id="take-item-dialog">
         <form method="dialog" id="take-item-form">
           <h2>분실물 가져가기</h2>
-          <label for="student-number">학번</label
-          ><input
+          <label for="student-number">학번</label>
+          <input
             id="student-number"
             name="studentNumber"
             type="number"
             required
           />
-          <label for="student-name">이름</label
-          ><input id="student-name" name="studentName" type="text" required />
-          <button type="submit" value="confirm">완료</button
-          ><button type="submit" value="cancel">취소</button>
+          <label for="student-name">이름</label>
+          <input id="student-name" name="studentName" type="text" required />
+          <button type="submit" value="confirm">완료</button>
+          <button type="submit" value="cancel">취소</button>
         </form>
       </dialog>
     </main>

@@ -6,23 +6,25 @@
     <title>관리자 로그인</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <script src="../js/common.js" defer></script>
+    <script src="../js/admin/login.js" defer></script>
   </head>
   <body>
     <main>
-      <a href="/index.html">학교 분실물 관리</a>
+      <a href="/index.html" class="back-link"> 분실물 목록으로 돌아가기 </a>
       <section>
         <h1>관리자 로그인</h1>
         <form id="admin-login-form">
-          <label for="username">관리자 ID</label
-          ><input
+          <label for="username">관리자 ID</label>
+          <input
             id="username"
             name="userName"
             type="text"
             autocomplete="username"
             required
           />
-          <label for="password">비밀번호</label
-          ><input
+          <label for="password">비밀번호</label>
+          <input
             id="password"
             name="password"
             type="password"

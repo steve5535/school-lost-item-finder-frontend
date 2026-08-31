@@ -6,23 +6,29 @@
     <title>창원 문성고등학교 분실물 관리</title>
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/user.css" />
+    <script src="js/common.js" defer></script>
+    <script src="js/user/index.js" defer></script>
   </head>
   <body>
     <header>
-      <a href="/index.html">창원 문성고등학교 분실물 관리</a>
+      <a href="/index.html" class="site-logo">
+        <img src="/images/school-logo.png" alt="학교 로고" />
+        <span>창원 문성고등학교 분실물 관리</span>
+      </a>
       <nav><a href="/admin/login.html">관리자 로그인</a></nav>
     </header>
     <main>
       <section>
         <h1>분실물 찾기</h1>
         <form id="search-form">
-          <label for="search">분실물 검색</label
-          ><input
+          <label for="search">분실물 검색</label>
+          <input
             id="search"
             name="keyword"
             type="search"
             placeholder="분실물 이름이나 특징을 입력하세요"
-          /><button type="submit">검색</button>
+          />
+          <button type="submit">검색</button>
         </form>
       </section>
       <section>
@@ -30,12 +36,12 @@
         <a href="/items/register.html">분실물 등록</a>
         <div id="item-list">
           <article class="item-card" data-item-id="">
-            <a href="/items/item-detail.html?id="
-              ><div class="item-image">분실물 사진</div>
+            <a href="/items/item-detail.html?id=">
+              <div class="item-image">분실물 사진</div>
               <h3>분실물 이름</h3>
               <p>찾은 장소</p>
-              <p>등록된 시간</p></a
-            >
+              <p>등록된 시간</p>
+            </a>
           </article>
         </div>
       </section>

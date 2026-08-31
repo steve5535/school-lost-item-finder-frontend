@@ -6,38 +6,41 @@
     <title>관리자 - 분실물 관리</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/admin.css" />
+    <script src="../js/common.js" defer></script>
+    <script src="../js/admin/index.js" defer></script>
   </head>
   <body>
     <header>
       <a href="/admin/index.html">학교 분실물 관리 · 관리자</a>
       <nav>
-        <a href="/index.html">일반 사용자 화면</a
-        ><button id="logout-button" type="button">로그아웃</button>
+        <a href="/index.html">일반 사용자 화면</a>
+        <button id="logout-button" type="button">로그아웃</button>
       </nav>
     </header>
     <main>
       <section>
         <h1>분실물 관리</h1>
         <form id="admin-search-form">
-          <label for="admin-search">분실물 검색</label
-          ><input
+          <label for="admin-search">분실물 검색</label>
+          <input
             id="admin-search"
             name="keyword"
             type="search"
             placeholder="분실물 이름이나 특징을 입력하세요"
-          /><button type="submit">검색</button>
+          />
+          <button type="submit">검색</button>
         </form>
       </section>
       <section>
         <h2>정식 분실물</h2>
         <div id="admin-item-list">
           <article class="item-card" data-item-id="">
-            <a href="/admin/item-detail.html?id="
-              ><div class="item-image">분실물 사진</div>
+            <a href="/admin/item-detail.html?id=">
+              <div class="item-image">분실물 사진</div>
               <h3>분실물 이름</h3>
               <p>찾은 장소</p>
-              <p>등록된 시간</p></a
-            >
+              <p>등록된 시간</p>
+            </a>
           </article>
         </div>
       </section>

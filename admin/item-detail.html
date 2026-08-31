@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="../css/admin.css" />
   </head>
   <body>
-    <header><a href="/admin/index.html">학교 분실물 관리 · 관리자</a></header>
+    <header>
+      <a href="/admin/index.html" class="site-logo">
+        <img src="/images/school-logo.png" alt="학교 로고" />
+        <span>창원 문성고등학교 분실물 관리</span>
+      </a>
+    </header>
     <main>
       <a href="/admin/index.html">← 목록으로</a>
       <article id="admin-item-detail" data-item-id="">
@@ -27,27 +32,24 @@
           <dd id="item-student">-</dd>
         </dl>
         <div>
-          <button id="edit-item-button" type="button">수정</button
-          ><button id="delete-item-button" type="button">삭제</button>
+          <button id="edit-item-button" type="button">수정</button>
+          <button id="delete-item-button" type="button">삭제</button>
         </div>
       </article>
       <section id="edit-item-section" hidden>
         <h2>분실물 수정</h2>
         <form id="edit-item-form">
-          <label for="edit-item-name">분실물 이름</label
-          ><input id="edit-item-name" name="itemName" type="text" required />
-          <label for="edit-item-detail">분실물 특징</label
-          ><textarea
-            id="edit-item-detail"
-            name="itemDetail"
-            required
-          ></textarea>
-          <label for="edit-item-place">찾은 장소</label
-          ><input id="edit-item-place" name="itemPlace" type="text" required />
-          <label for="edit-item-img">분실물 사진</label
-          ><input id="edit-item-img" name="itemImg" type="text" />
-          <button type="submit">수정 완료</button
-          ><button id="cancel-edit-button" type="button">취소</button>
+          <label for="edit-item-name">분실물 이름</label>
+          <input id="edit-item-name" name="itemName" type="text" required />
+          <label for="edit-item-detail">분실물 특징</label>
+          <textarea id="edit-item-detail" name="itemDetail" required>
+          </textarea>
+          <label for="edit-item-place">찾은 장소</label>
+          <input id="edit-item-place" name="itemPlace" type="text" required />
+          <label for="edit-item-img">분실물 사진</label>
+          <input id="edit-item-img" name="itemImg" type="text" />
+          <button type="submit">수정 완료</button>
+          <button id="cancel-edit-button" type="button">취소</button>
         </form>
       </section>
     </main>

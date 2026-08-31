@@ -6,22 +6,29 @@
     <title>분실물 등록</title>
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <script src="../js/common.js" defer></script>
+    <script src="../js/user/register.js" defer></script>
   </head>
   <body>
-    <header><a href="/index.html">학교 분실물 관리</a></header>
+    <header>
+      <a href="/index.html" class="site-logo">
+        <img src="/images/school-logo.png" alt="학교 로고" />
+        <span>창원 문성고등학교 분실물 관리</span>
+      </a>
+    </header>
     <main>
       <a href="/index.html">← 목록으로</a>
       <h1>분실물 등록</h1>
       <p>등록된 분실물은 관리자 확인 후 정식 분실물로 등록됩니다.</p>
       <form id="temporary-item-register-form">
-        <label for="item-name">분실물 이름</label
-        ><input id="item-name" name="itemName" type="text" required />
-        <label for="item-detail">분실물 특징</label
-        ><textarea id="item-detail" name="itemDetail" required></textarea>
-        <label for="item-place">찾은 장소</label
-        ><input id="item-place" name="itemPlace" type="text" required />
-        <label for="item-img">분실물 사진</label
-        ><input
+        <label for="item-name">분실물 이름</label>
+        <input id="item-name" name="itemName" type="text" required />
+        <label for="item-detail">분실물 특징</label>
+        <textarea id="item-detail" name="itemDetail" required></textarea>
+        <label for="item-place">찾은 장소</label>
+        <input id="item-place" name="itemPlace" type="text" required />
+        <label for="item-img">분실물 사진</label>
+        <input
           id="item-img"
           name="itemImg"
           type="text"

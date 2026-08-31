@@ -1,16 +1,12 @@
-/* 관리자 */
-
 body:has(#admin-login-form) {
   min-height: 100vh;
   display: grid;
   place-items: center;
 }
-
 body:has(#admin-login-form) main {
   width: min(calc(100% - 32px), 430px);
   padding: 24px 0;
 }
-
 body:has(#admin-login-form) main > a:first-child {
   display: block;
   margin-bottom: 30px;
@@ -19,7 +15,6 @@ body:has(#admin-login-form) main > a:first-child {
   font-size: 21px;
   font-weight: 800;
 }
-
 body:has(#admin-login-form) section {
   margin: 0;
   padding: 30px;
@@ -28,21 +23,17 @@ body:has(#admin-login-form) section {
   border-radius: 18px;
   box-shadow: var(--shadow);
 }
-
 body:has(#admin-login-form) h1 {
   font-size: 30px;
 }
-
 #admin-login-form {
   margin-top: 24px;
 }
-
 #login-error {
   margin-top: 14px;
   color: var(--danger);
   font-size: 14px;
 }
-
 #admin-search-form {
   max-width: 720px;
   margin-top: 28px;
@@ -50,32 +41,26 @@ body:has(#admin-login-form) h1 {
   grid-template-columns: 1fr auto;
   gap: 10px;
 }
-
 #admin-search-form label {
-  grid-column: 1 / -1;
+  grid-column: 1/-1;
 }
-
 #admin-item-list {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-
 #admin-item-list .item-card a {
   display: block;
   padding: 12px;
 }
-
 #admin-item-list .item-card h3 {
   margin: 15px 3px 4px;
 }
-
 #admin-item-list .item-card p {
   margin: 0 3px;
   font-size: 13px;
 }
-
 #admin-item-detail,
 #temporary-item-detail {
   max-width: 760px;
@@ -86,13 +71,11 @@ body:has(#admin-login-form) h1 {
   border-radius: 18px;
   box-shadow: var(--shadow);
 }
-
 #admin-item-detail .item-image,
 #temporary-item-detail .item-image {
   min-height: 420px;
   margin-bottom: 28px;
 }
-
 #admin-item-detail > div:last-child,
 #temporary-item-detail > div:last-child {
   margin-top: 30px;
@@ -100,7 +83,6 @@ body:has(#admin-login-form) h1 {
   flex-wrap: wrap;
   gap: 10px;
 }
-
 #edit-item-section {
   max-width: 760px;
   margin: 24px auto 0;
@@ -109,18 +91,15 @@ body:has(#admin-login-form) h1 {
   border: 1px solid var(--border);
   border-radius: 18px;
 }
-
 #edit-item-form {
   margin-top: 20px;
 }
-
 #temporary-item-list {
   margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-
 .temporary-item-card {
   overflow: hidden;
   background: var(--surface);
@@ -128,59 +107,61 @@ body:has(#admin-login-form) h1 {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
+    transform 0.18s,
+    box-shadow 0.18s;
 }
-
 .temporary-item-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(25, 31, 43, 0.11);
 }
-
 .temporary-item-card a {
   display: block;
   padding: 12px;
 }
-
 .temporary-item-card h2 {
   margin: 15px 3px 4px;
   font-size: 18px;
 }
-
 .temporary-item-card p {
   margin: 0 3px;
   font-size: 13px;
 }
-
-#temporary-item-detail #item-state {
-  font-weight: 700;
-}
-
 @media (max-width: 900px) {
   #admin-item-list,
   #temporary-item-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
 @media (max-width: 600px) {
   #admin-search-form {
     grid-template-columns: 1fr;
   }
-
   #admin-item-list,
   #temporary-item-list {
     grid-template-columns: 1fr;
   }
-
   #admin-item-detail,
   #temporary-item-detail,
   #edit-item-section {
     padding: 16px;
   }
-
   #admin-item-detail .item-image,
   #temporary-item-detail .item-image {
     min-height: 280px;
   }
+}
+
+body:has(#admin-login-form) .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+body:has(#admin-login-form) .back-link:hover {
+  color: var(--text);
 }
