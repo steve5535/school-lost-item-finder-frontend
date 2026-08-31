@@ -3,15 +3,17 @@ const API_BASE_URL = "http://localhost:8080";
 async function apiFetch(path, options = {}) {
     const config = {
         credentials: "include",
+        ...options,
         headers: {
-            "Content-Type": "application/json",
+            ...(options.body ? { "Content-Type": "application/json" } : {}),
             ...(options.headers || {})
-        },
-        ...options
+        }
     };
 
     const response = await fetch(`${API_BASE_URL}${path}`, config);
+
     const contentType = response.headers.get("content-type") || "";
+
     const data = contentType.includes("application/json")
         ? await response.json()
         : await response.text();
@@ -21,6 +23,7 @@ async function apiFetch(path, options = {}) {
             (data && typeof data === "object" && (data.message || data.error)) ||
             (typeof data === "string" && data) ||
             `요청에 실패했습니다. (${response.status})`;
+
         throw new Error(message);
     }
 
