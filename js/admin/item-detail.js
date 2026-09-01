@@ -23,6 +23,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             } catch (error) { showError(error); }
         });
 
+        const editButton = document.querySelector("#edit-item-button");
+        const editSection = document.querySelector("#edit-item-section");
+
+        editButton?.addEventListener("click", () => {
+            editSection.hidden = false;
+
+            document.querySelector("#edit-item-name").value = item.itemName ?? "";
+            document.querySelector("#edit-item-detail").value = item.itemDetail ?? "";
+            document.querySelector("#edit-item-place").value = item.itemPlace ?? "";
+            document.querySelector("#edit-item-img").value = item.itemImg ?? "";
+        });
+
         document.querySelector("#edit-item-form")?.addEventListener("submit", async event => {
             event.preventDefault();
             const form = event.currentTarget;
