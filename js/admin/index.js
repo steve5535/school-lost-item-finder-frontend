@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const itemList = document.querySelector("#admin-item-list");
     const temporaryList = document.querySelector("#temporary-item-list");
+    const declinedList = document.querySelector("#declined-item-list");
     const searchForm = document.querySelector("#admin-search-form");
     const searchInput = searchForm?.querySelector("input");
 
@@ -25,8 +26,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!temporaryList) return;
 
         try {
-            const items = await apiFetch("/temporary-item");
-            renderTemporaryItems(Array.isArray(items) ? items : []);
+            const response = await apiFetch("/temporary-item");
+            const items = Array.isArray(response) ? response : [];
+
+            const temporaryItems = items.filter(item => item.isAccept === null);
+            const declinedItems = items.filter(item => item.isAccept === false);
+
+            renderTemporaryItems(temporaryItems);
+            renderDeclinedItems(declinedItems);
+
         } catch (error) {
             showError(error);
         }
@@ -37,14 +45,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         target.innerHTML = "";
         items.forEach(item => {
             const card = document.createElement("article");
-            card.className = "item-card";
+            card.className = "temporary-item-card";
             card.innerHTML = `
                 <a href="${basePath}?id=${item.itemId}">
                     <div class="item-image">
                         ${item.itemImg ? `<img src="${escapeHtml(item.itemImg)}" alt="${escapeHtml(item.itemName)}">` : "이미지 없음"}
                     </div>
                     <h3>${escapeHtml(item.itemName)}</h3>
-                    <p>${escapeHtml(item.itemPlace)}</p>
+                    <p>특징: ${escapeHtml(item.itemDetail)}</p>
+                    <p>장소: ${escapeHtml(item.itemPlace)}</p>
+                    <p>등록된 시간: ${formatDate(item.signUpAt)}</p>
                 </a>
             `;
             target.appendChild(card);
@@ -65,12 +75,45 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </div>
                     <h2>${escapeHtml(item.itemName)}</h2>
                     <p>${escapeHtml(item.itemPlace)}</p>
+                    <p>등록된 시간: ${formatDate(item.signUp)}</p>
                     <p>상태: ${status}</p>
                 </a>
             `;
             temporaryList.appendChild(card);
         });
         if (!items.length) temporaryList.innerHTML = "<p>임시 저장소가 비어 있습니다.</p>";
+    }
+
+    function renderDeclinedItems(items) {
+        if (!declinedList) return;
+
+        declinedList.innerHTML = "";
+
+        items.forEach(item => {
+            const card = document.createElement("article");
+            card.className = "temporary-item-card";
+
+            card.innerHTML = `
+            <a href="/admin/temporary-item-detail.html?id=${item.itemId}">
+                <div class="item-image">
+                    ${item.itemImg
+                    ? `<img src="${escapeHtml(item.itemImg)}" alt="${escapeHtml(item.itemName)}">`
+                    : "이미지 없음"
+                }
+                </div>
+
+                <h3>${escapeHtml(item.itemName)}</h3>
+                <p>${escapeHtml(item.itemPlace)}</p>
+                <p>등록된 시간: ${formatDate(item.signUp)}</p>
+                <p>상태: 거절</p>
+            </a>
+        `;
+            declinedList.appendChild(card);
+        });
+
+        if (!items.length) {
+            declinedList.innerHTML = "<p>거절된 분실물이 없습니다.</p>";
+        }
     }
 
     searchForm?.addEventListener("submit", event => {

@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const status = item.isAccept === null ? "대기 중" : item.isAccept ? "수락" : "거절";
         setText("#item-status", status);
 
+        if (item.isAccept === false) {
+            document.querySelector("#accept-button")?.remove();
+            document.querySelector("#decline-button")?.remove();
+        }
+
         document.querySelector("#accept-button")?.addEventListener("click", () => changeStatus(id, "accept"));
         document.querySelector("#decline-button")?.addEventListener("click", () => changeStatus(id, "decline"));
 
@@ -24,8 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             try {
                 await apiFetch(`/temporary-item/${id}`, { method: "DELETE" });
-                alert("삭제되었습니다.");
-                location.href = "/admin/temporary-items.html";
+                location.href = "/admin/index.html";
             } catch (error) { showError(error); }
         });
     } catch (error) {
@@ -37,7 +41,9 @@ async function changeStatus(id, action) {
     try {
         await apiFetch(`/temporary-item/${action}/${id}`, { method: "PATCH" });
         alert(action === "accept" ? "수락되었습니다." : "거절되었습니다.");
-        location.reload();
+
+        location.href = "/admin/index.html";
+
     } catch (error) {
         showError(error);
     }

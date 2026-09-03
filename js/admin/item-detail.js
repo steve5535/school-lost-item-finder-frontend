@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!confirm("이 분실물을 삭제하시겠습니까?")) return;
             try {
                 await apiFetch(`/items/${id}`, { method: "DELETE" });
-                alert("삭제되었습니다.");
                 location.href = "/admin/index.html";
             } catch (error) { showError(error); }
         });

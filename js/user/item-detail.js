@@ -34,6 +34,12 @@ function openTakeModal(itemId) {
     const modal = form.closest("dialog");
     modal?.showModal();
 
+    const cancelButton = form.querySelector('button[value="cancel"]');
+
+    cancelButton?.addEventListener("click", () => {
+        modal?.close();
+    });
+
     form.onsubmit = async event => {
         event.preventDefault();
         const studentNumber = Number(form.querySelector('[name="studentNumber"]')?.value);
@@ -55,7 +61,7 @@ async function takeItem(itemId, studentNumber, studentName) {
             method: "PATCH",
             body: JSON.stringify({ studentNumber, studentName })
         });
-        alert("가져가기 신청이 완료되었습니다.");
+        alert("가져가기가 완료되었습니다.");
         location.reload();
     } catch (error) {
         showError(error);

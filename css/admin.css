@@ -94,7 +94,8 @@ body:has(#admin-login-form) h1 {
 #edit-item-form {
   margin-top: 20px;
 }
-#temporary-item-list {
+#temporary-item-list,
+#declined-item-list {
   margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

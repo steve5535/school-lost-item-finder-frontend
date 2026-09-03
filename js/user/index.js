@@ -38,8 +38,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         ${item.itemImg ? `<img src="${escapeHtml(item.itemImg)}" alt="${escapeHtml(item.itemName)}">` : "이미지 없음"}
                     </div>
                     <h3>${escapeHtml(item.itemName)}</h3>
-                    <p>${escapeHtml(item.itemPlace)}</p>
-                    <p>${formatDate(item.signUpAt)}</p>
+                    <p>특징: ${escapeHtml(item.itemDetail)}</p>
+                    <p>장소: ${escapeHtml(item.itemPlace)}</p>
+                    <p>등록된 시간: ${formatDate(item.signUpAt)}</p>
                 </a>
             `;
             list.appendChild(card);
