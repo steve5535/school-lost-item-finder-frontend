@@ -44,20 +44,39 @@ body:has(#admin-login-form) h1 {
 #admin-search-form label {
   grid-column: 1/-1;
 }
-#admin-item-list {
+#admin-item-list,
+#taken-item-list {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-#admin-item-list .item-card a {
+#admin-item-list .item-card,
+#taken-item-list .item-card {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.18s,
+    box-shadow 0.18s;
+}
+#admin-item-list .item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(25, 31, 43, 0.11);
+}
+#admin-item-list .item-card a,
+#taken-item-list .item-card a {
   display: block;
   padding: 12px;
 }
-#admin-item-list .item-card h3 {
+#admin-item-list .item-card h3,
+#taken-item-list .item-card h3 {
   margin: 15px 3px 4px;
 }
-#admin-item-list .item-card p {
+#admin-item-list .item-card p,
+#taken-item-list .item-card p {
   margin: 0 3px;
   font-size: 13px;
 }
@@ -123,13 +142,19 @@ body:has(#admin-login-form) h1 {
   margin: 15px 3px 4px;
   font-size: 18px;
 }
+.temporary-item-card h3 {
+  margin: 15px 3px 4px;
+  font-size: 18px;
+}
 .temporary-item-card p {
   margin: 0 3px;
   font-size: 13px;
 }
 @media (max-width: 900px) {
   #admin-item-list,
-  #temporary-item-list {
+  #temporary-item-list,
+  #declined-item-list,
+  #taken-item-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -138,7 +163,9 @@ body:has(#admin-login-form) h1 {
     grid-template-columns: 1fr;
   }
   #admin-item-list,
-  #temporary-item-list {
+  #temporary-item-list,
+  #declined-item-list,
+  #taken-item-list {
     grid-template-columns: 1fr;
   }
   #admin-item-detail,

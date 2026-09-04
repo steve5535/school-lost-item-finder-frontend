@@ -194,6 +194,17 @@ button[type="submit"]:hover,
   color: var(--warning);
   font-weight: 700;
 }
+#cancel-edit-button {
+  padding: 11px 17px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-hover);
+  color: var(--text);
+  font-weight: 700;
+}
+#cancel-edit-button:hover {
+  background: var(--border);
+}
 .item-image {
   min-height: 210px;
   border-radius: 12px;

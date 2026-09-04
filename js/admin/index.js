@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const itemList = document.querySelector("#admin-item-list");
     const temporaryList = document.querySelector("#temporary-item-list");
     const declinedList = document.querySelector("#declined-item-list");
+    const takenList = document.querySelector("#taken-item-list");
     const searchForm = document.querySelector("#admin-search-form");
     const searchInput = searchForm?.querySelector("input");
 
@@ -11,12 +12,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const items = await apiFetch("/items");
             const filtered = (Array.isArray(items) ? items : []).filter(item => {
+                if (item.takeAt !== null && item.takeAt !== undefined) return false;
                 if (!keyword.trim()) return true;
                 const q = keyword.trim().toLowerCase();
                 return [item.itemName, item.itemDetail, item.itemPlace]
                     .some(v => String(v ?? "").toLowerCase().includes(q));
             });
+
+            const takenItems = (Array.isArray(items) ? items : []).filter(item => {
+                if (item.takeAt === null || item.takeAt === undefined) return false;
+                if (!keyword.trim()) return true;
+                const q = keyword.trim().toLowerCase();
+                return [item.itemName, item.itemDetail, item.itemPlace]
+                    .some(v => String(v ?? "").toLowerCase().includes(q));
+            });
+
             renderItems(itemList, filtered, "/admin/item-detail.html");
+
+            renderItems(takenList, takenItems, "/admin/item-detail.html");
         } catch (error) {
             showError(error);
         }
@@ -45,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         target.innerHTML = "";
         items.forEach(item => {
             const card = document.createElement("article");
-            card.className = "temporary-item-card";
+            card.className = "item-card";
             card.innerHTML = `
                 <a href="${basePath}?id=${item.itemId}">
                     <div class="item-image">
@@ -55,6 +68,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p>특징: ${escapeHtml(item.itemDetail)}</p>
                     <p>장소: ${escapeHtml(item.itemPlace)}</p>
                     <p>등록된 시간: ${formatDate(item.signUpAt)}</p>
+                    ${item.takeAt ? `
+                        <p>수령 시간: ${formatDate(item.takeAt)}</p>
+                        <p>수령 학생: ${item.student
+                        ? `${item.student.studentNumber} ${item.student.studentName}`
+                        : "-"
+                    }</p>
+                    ` : ""}
                 </a>
             `;
             target.appendChild(card);
@@ -73,8 +93,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="item-image">
                         ${item.itemImg ? `<img src="${escapeHtml(item.itemImg)}" alt="${escapeHtml(item.itemName)}">` : "이미지 없음"}
                     </div>
-                    <h2>${escapeHtml(item.itemName)}</h2>
-                    <p>${escapeHtml(item.itemPlace)}</p>
+                    <h3>${escapeHtml(item.itemName)}</h3>
+                    <p>특징: ${escapeHtml(item.itemDetail)}</p>
+                    <p>장소: ${escapeHtml(item.itemPlace)}</p>
                     <p>등록된 시간: ${formatDate(item.signUp)}</p>
                     <p>상태: ${status}</p>
                 </a>
@@ -103,7 +124,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
 
                 <h3>${escapeHtml(item.itemName)}</h3>
-                <p>${escapeHtml(item.itemPlace)}</p>
+                <p>특징: ${escapeHtml(item.itemDetail)}</p>
+                <p>장소: ${escapeHtml(item.itemPlace)}</p>
                 <p>등록된 시간: ${formatDate(item.signUp)}</p>
                 <p>상태: 거절</p>
             </a>

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const items = await apiFetch("/items");
             const filtered = Array.isArray(items)
                 ? items.filter(item => {
+                    if (item.takeAt !== null) return false;
                     if (!keyword.trim()) return true;
                     const q = keyword.trim().toLowerCase();
                     return [item.itemName, item.itemDetail, item.itemPlace]

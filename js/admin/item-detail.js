@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         setText("#item-place", item.itemPlace);
         setText("#item-sign-up-at", formatDate(item.signUpAt));
         setText("#item-take-at", formatDate(item.takeAt));
+        setText(
+            "#item-student",
+            item.student
+                ? `${item.student.studentNumber} ${item.student.studentName}`
+                : "-"
+        );
         setImage("#item-image", item.itemImg, item.itemName);
 
         document.querySelector("#delete-item-button")?.addEventListener("click", async () => {
@@ -32,6 +38,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.querySelector("#edit-item-detail").value = item.itemDetail ?? "";
             document.querySelector("#edit-item-place").value = item.itemPlace ?? "";
             document.querySelector("#edit-item-img").value = item.itemImg ?? "";
+        });
+
+        document.querySelector("#cancel-edit-button")?.addEventListener("click", () => {
+            editSection.hidden = true;
         });
 
         document.querySelector("#edit-item-form")?.addEventListener("submit", async event => {

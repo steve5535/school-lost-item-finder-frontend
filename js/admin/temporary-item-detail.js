@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setText("#item-name", item.itemName);
         setText("#item-detail-text", item.itemDetail);
         setText("#item-place", item.itemPlace);
-        setText("#item-sign-up-at", formatDate(item.signUp));
+        setText("#item-sign-up", formatDate(item.signUp));
         setImage("#item-image", item.itemImg, item.itemName);
 
         const status = item.isAccept === null ? "대기 중" : item.isAccept ? "수락" : "거절";

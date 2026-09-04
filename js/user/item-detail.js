@@ -62,7 +62,7 @@ async function takeItem(itemId, studentNumber, studentName) {
             body: JSON.stringify({ studentNumber, studentName })
         });
         alert("가져가기가 완료되었습니다.");
-        location.reload();
+        location.href = "/index.html";
     } catch (error) {
         showError(error);
     }
