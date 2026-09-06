@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelector("#decline-button")?.addEventListener("click", () => changeStatus(id, "decline"));
 
         document.querySelector("#delete-button")?.addEventListener("click", async () => {
-            if (!confirm("임시 저장소에서 삭제하시겠습니까?")) return;
+            if (!confirm("거절된 분실물을 삭제하시겠습니까?")) return;
 
             try {
                 await apiFetch(`/temporary-item/${id}`, { method: "DELETE" });

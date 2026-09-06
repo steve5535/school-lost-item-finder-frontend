@@ -186,13 +186,17 @@ button[type="submit"]:hover,
 #delete-button:hover {
   background: #ffe1df;
 }
-#decline-button {
+#decline-button,
+#cancel-take-button {
   padding: 11px 17px;
   border: 0;
   border-radius: 10px;
   background: var(--warning-bg);
   color: var(--warning);
   font-weight: 700;
+}
+#cancel-take-button:hover {
+  background: #ffe9c2;
 }
 #cancel-edit-button {
   padding: 11px 17px;

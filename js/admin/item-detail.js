@@ -2,6 +2,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!requireAdmin()) return;
 
     const id = new URLSearchParams(location.search).get("id");
+    const cancelButton = document.querySelector("#cancel-take-button");
+
+    cancelButton?.addEventListener("click", async () => {
+
+        if (!confirm("이 분실물의 수령을 취소하시겠습니까?")) {
+            return;
+        }
+
+        try {
+            await apiFetch(`/items/cancel-take/${id}`, {
+                method: "PATCH"
+            });
+            location.href = "/admin/index.html";
+        } catch (error) {
+            showError(error);
+        }
+    });
     if (!id) return showError(new Error("분실물 번호가 없습니다."));
 
     try {
@@ -19,6 +36,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 : "-"
         );
         setImage("#item-image", item.itemImg, item.itemName);
+
+        if (item.takeAt) {
+            cancelButton.hidden = false;
+        }
 
         document.querySelector("#delete-item-button")?.addEventListener("click", async () => {
             if (!confirm("이 분실물을 삭제하시겠습니까?")) return;
