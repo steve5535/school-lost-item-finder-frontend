@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://past-workflow-forbes-teachers.trycloudflare.com";
+const API_BASE_URL = "https://confidential-lasting-demonstrate-millions.trycloudflare.com";
 
 async function apiFetch(path, options = {}) {
     const config = {
