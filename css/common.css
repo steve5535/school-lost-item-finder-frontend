@@ -545,7 +545,7 @@ article#item-detail,
 
 :is(article#item-detail, #admin-item-detail, #temporary-item-detail)
   > .item-image:has(> img[hidden])::after {
-  content: "�깅줉�� �ъ쭊�� �놁뒿�덈떎";
+  content: "이미지가 존재하지 않습니다";
   padding: 20px;
   text-align: center;
 }

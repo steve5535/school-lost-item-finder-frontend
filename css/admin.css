@@ -133,7 +133,7 @@ body:has(#admin-login-form) .back-link {
 }
 
 body:has(#admin-login-form) .back-link::before {
-  content: "��";
+  content: "←";
   margin-right: 8px;
 }
 
