@@ -1,4 +1,5 @@
-const API_BASE_URL = "https://checklist-attorneys-republican-deeply.trycloudflare.com";
+//const API_BASE_URL = "https://checklist-attorneys-republican-deeply.trycloudflare.com";
+const API_BASE_URL = "http://127.0.0.1:8080";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
@@ -83,13 +84,21 @@ function setText(selector, value) {
     }
 }
 
+function getImageUrl(src) {
+    if (!src) {
+        return "";
+    }
+
+    return `${API_BASE_URL}${src}`;
+}
+
 function setImage(selector, src, alt = "") {
     const image = document.querySelector(selector);
 
     if (!image) return;
 
     if (src) {
-        image.src = src;
+        image.src = getImageUrl(src);
         image.alt = alt;
         image.hidden = false;
     } else {

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setImage("#item-image", item.itemImg, item.itemName);
 
         const status = item.isAccept === null ? "대기 중" : item.isAccept ? "수락" : "거절";
-        setText("#item-status", status);
+        setText("#item-state", status);
 
         if (item.isAccept === false) {
             document.querySelector("#accept-button")?.remove();

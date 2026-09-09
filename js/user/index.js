@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             card.innerHTML = `
                 <a href="/items/item-detail.html?id=${item.itemId}">
                     <div class="item-image">
-                        ${item.itemImg ? `<img src="${escapeHtml(item.itemImg)}" alt="${escapeHtml(item.itemName)}">` : "이미지 없음"}
+                        ${item.itemImg ? `<img src="${escapeHtml(getImageUrl(item.itemImg))}" alt="${escapeHtml(item.itemName)}">` : "이미지 없음"}
                     </div>
                     <h3>${escapeHtml(item.itemName)}</h3>
                     <p>특징: ${escapeHtml(item.itemDetail)}</p>
