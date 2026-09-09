@@ -1,11 +1,15 @@
 const API_BASE_URL = "https://checklist-attorneys-republican-deeply.trycloudflare.com";
 
 async function apiFetch(path, options = {}) {
+    const isFormData = options.body instanceof FormData;
+
     const config = {
         credentials: "include",
         ...options,
         headers: {
-            ...(options.body ? { "Content-Type": "application/json" } : {}),
+            ...(!isFormData && options.body
+                ? { "Content-Type": "application/json" }
+                : {}),
             ...(options.headers || {})
         }
     };
@@ -20,7 +24,9 @@ async function apiFetch(path, options = {}) {
 
     if (!response.ok) {
         const message =
-            (data && typeof data === "object" && (data.message || data.error)) ||
+            (data &&
+                typeof data === "object" &&
+                (data.message || data.error)) ||
             (typeof data === "string" && data) ||
             `요청에 실패했습니다. (${response.status})`;
 
@@ -34,13 +40,19 @@ function getPathId() {
     const parts = location.pathname.split("/").filter(Boolean);
     const last = parts.at(-1);
     const value = Number(last);
+
     return Number.isInteger(value) && value > 0 ? value : null;
 }
 
 function formatDate(value) {
     if (!value) return "-";
+
     const date = new Date(value);
-    if (Number.isNaN(date.getTime())) return value;
+
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
     return date.toLocaleString("ko-KR", {
         year: "numeric",
         month: "2-digit",
@@ -48,13 +60,15 @@ function formatDate(value) {
         hour: "2-digit",
         minute: "2-digit"
     });
-
 }
 
 function showError(error, selector = "#error-message") {
     const element = document.querySelector(selector);
+
     if (element) {
-        element.textContent = error?.message || "오류가 발생했습니다.";
+        element.textContent =
+            error?.message || "오류가 발생했습니다.";
+
         element.hidden = false;
     } else {
         alert(error?.message || "오류가 발생했습니다.");
@@ -63,11 +77,15 @@ function showError(error, selector = "#error-message") {
 
 function setText(selector, value) {
     const element = document.querySelector(selector);
-    if (element) element.textContent = value ?? "-";
+
+    if (element) {
+        element.textContent = value ?? "-";
+    }
 }
 
 function setImage(selector, src, alt = "") {
     const image = document.querySelector(selector);
+
     if (!image) return;
 
     if (src) {
@@ -89,6 +107,7 @@ function requireAdmin() {
         location.replace("/admin/login.html");
         return false;
     }
+
     return true;
 }
 

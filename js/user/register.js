@@ -5,24 +5,45 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async event => {
         event.preventDefault();
 
-        const body = {
+        const file = form.querySelector('[name="itemImg"]')?.files[0];
+
+        const request = {
             itemName: form.querySelector('[name="itemName"]')?.value.trim(),
             itemDetail: form.querySelector('[name="itemDetail"]')?.value.trim(),
             itemPlace: form.querySelector('[name="itemPlace"]')?.value.trim(),
-            itemImg: form.querySelector('[name="itemImg"]')?.value.trim() || null,
             isAccept: null
         };
 
-        if (!body.itemName || !body.itemDetail || !body.itemPlace) {
+        if (!request.itemName || !request.itemDetail || !request.itemPlace) {
             alert("물건 이름, 상세 정보, 발견 장소를 입력하세요.");
             return;
         }
 
+        if (!file) {
+            alert("분실물 사진을 선택하세요.");
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append(
+            "request",
+            new Blob(
+                [JSON.stringify(request)],
+                {
+                    type: "application/json"
+                }
+            )
+        );
+
+        formData.append("file", file);
+
         try {
             await apiFetch("/temporary-item", {
                 method: "POST",
-                body: JSON.stringify(body)
+                body: formData
             });
+
             alert("분실물이 등록되었습니다.");
             location.href = "/index.html";
         } catch (error) {

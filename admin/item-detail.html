@@ -54,7 +54,12 @@
           <label for="edit-item-place">찾은 장소</label>
           <input id="edit-item-place" name="itemPlace" type="text" required />
           <label for="edit-item-img">분실물 사진</label>
-          <input id="edit-item-img" name="itemImg" type="text" />
+          <input
+            id="edit-item-img"
+            name="itemImg"
+            type="file"
+            accept="image/*"
+          />
           <button type="submit">수정 완료</button>
           <button id="cancel-edit-button" type="button">취소</button>
         </form>

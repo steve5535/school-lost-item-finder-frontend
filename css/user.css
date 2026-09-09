@@ -1,107 +1,196 @@
-#search-form {
-  max-width: 720px;
-  margin-top: 28px;
+main > section:has(> #search-form) {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 24px 40px;
+  padding: 36px 40px;
+  border: 1px solid #20365f;
+  border-radius: 20px;
+  background: #20365f;
+  color: #fff;
 }
-#search-form label {
-  grid-column: 1/-1;
+
+main > section:has(> #search-form) > h1 {
+  font-size: clamp(28px, 3.2vw, 40px);
+  letter-spacing: -0.05em;
 }
-#item-list {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-.item-card {
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition:
-    transform 0.18s,
-    box-shadow 0.18s;
-}
-.item-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(25, 31, 43, 0.11);
-}
-.item-card a {
+
+main > section:has(> #search-form) > h1::before {
+  content: "";
   display: block;
-  padding: 12px;
+  width: 30px;
+  height: 4px;
+  margin-bottom: 17px;
+  border-radius: 4px;
+  background: #e8c46a;
 }
-.item-card h3 {
-  margin: 15px 3px 4px;
-}
-.item-card p {
-  margin: 0 3px;
+
+#search-form label {
+  color: #dce5f6;
   font-size: 13px;
+  font-weight: 500;
 }
-.item-card p + p {
-  margin-top: 2px;
+
+#search-form input {
+  border-color: transparent;
 }
-#item-detail {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
+
+#search-form input:focus {
+  border-color: #b6cbff;
+  box-shadow: 0 0 0 4px rgb(166 195 255 / 20%);
 }
-#item-detail .item-image {
-  min-height: 420px;
-  margin-bottom: 28px;
+
+#search-form button {
+  border-color: #819dd3;
+  background: #e9effb;
+  color: #20365f;
 }
-#item-detail h1 {
-  font-size: 32px;
+
+main > section:has(> #item-list) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0 16px;
 }
-#take-item-button {
-  width: 100%;
-  margin-top: 30px;
+
+#item-list {
+  grid-column: 1 / -1;
 }
-#temporary-item-register-form {
-  max-width: 720px;
-  margin: 28px auto 0;
-  padding: 28px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
+
 section > a[href="/items/register.html"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 17px;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--primary);
   border-radius: 10px;
   background: var(--primary);
   color: #fff;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  white-space: nowrap;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
-section > a[href="/items/register.html"]:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
+
+section > a[href="/items/register.html"]::before {
+  content: "+";
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
 }
-@media (max-width: 900px) {
-  #item-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+body:has(#temporary-item-register-form) main {
+  max-width: 720px;
+}
+
+body:has(#temporary-item-register-form) main > h1 {
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+body:has(#temporary-item-register-form) main > p {
+  margin-top: 10px;
+  font-size: 14px;
+  word-break: keep-all;
+}
+
+#temporary-item-register-form {
+  grid-template-columns: minmax(0, 1fr) 120px;
+  margin-top: 28px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+#temporary-item-register-form > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 18px;
+  padding: 11px 18px;
+  border: 1px solid #d6ddea;
+  border-radius: 10px;
+  background: var(--surface);
+  color: #4b5870;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #search-form button:not(:disabled):hover {
+    border-color: #fff;
+    background: #fff;
+    color: #20365f;
+  }
+
+  section > a[href="/items/register.html"]:hover {
+    border-color: var(--primary-hover);
+    background: var(--primary-hover);
+  }
+
+  #temporary-item-register-form > a:hover {
+    background: var(--surface-hover);
   }
 }
-@media (max-width: 600px) {
-  #search-form {
-    grid-template-columns: 1fr;
+
+@media (max-width: 819px) {
+  main > section:has(> #search-form) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 30px;
   }
-  #item-list {
-    grid-template-columns: 1fr;
+}
+
+@media (max-width: 599px) {
+  main > section:has(> #search-form) {
+    gap: 24px;
+    padding: 24px 20px;
+    border-radius: 16px;
   }
-  #item-detail,
+
+  main > section:has(> #search-form) > h1::before {
+    margin-bottom: 13px;
+  }
+
+  main > section:has(> #item-list) {
+    gap: 0 10px;
+  }
+
+  main > section:has(> #item-list) > h2 {
+    font-size: 18px;
+  }
+
+  section > a[href="/items/register.html"] {
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
   #temporary-item-register-form {
-    padding: 16px;
+    grid-template-columns: minmax(0, 1fr) 88px;
+    margin-top: 22px;
+    padding: 22px 18px;
+    border-radius: 16px;
   }
-  #item-detail .item-image {
-    min-height: 280px;
+}
+
+@media (max-width: 359px) {
+  main > section:has(> #item-list) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  section > a[href="/items/register.html"] {
+    justify-self: start;
+  }
+
+  #item-list {
+    margin-top: 4px;
   }
 }
