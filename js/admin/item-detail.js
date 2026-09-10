@@ -124,11 +124,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     return;
                 }
 
-                if (!file) {
-                    alert("수정할 사진을 선택하세요.");
-                    return;
-                }
-
                 const formData = new FormData();
 
                 formData.append(
@@ -141,7 +136,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     )
                 );
 
-                formData.append("file", file);
+                if (file) {
+                    formData.append("file", file);
+                }
 
                 try {
                     await apiFetch(`/items/${id}`, {
