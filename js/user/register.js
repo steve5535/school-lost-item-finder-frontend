@@ -19,11 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!file) {
-            alert("분실물 사진을 선택하세요.");
-            return;
-        }
-
         const formData = new FormData();
 
         formData.append(
@@ -36,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
-        formData.append("file", file);
+        if (file) {
+            formData.append("file", file);
+        }
 
         try {
             await apiFetch("/temporary-item", {
