@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ball-sunrise-punch-contribute.trycloudflare.com";
+const API_BASE_URL = "https://rank-already-upload-meters.trycloudflare.com";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
