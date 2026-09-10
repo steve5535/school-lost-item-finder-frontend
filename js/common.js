@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://specialist-questions-blackjack-hey.trycloudflare.com";
+const API_BASE_URL = "https://losses-able-licensed-doors.trycloudflare.com";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
