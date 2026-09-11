@@ -194,3 +194,94 @@ body:has(#temporary-item-register-form) main > p {
     margin-top: 4px;
   }
 }
+
+.image-mode-tabs {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.image-mode-tab {
+  min-height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.image-mode-tab.active {
+  border-bottom: 2px solid var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+#file-mode-container {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 14px;
+}
+
+#file-mode-container input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#camera-container {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-hover);
+  box-sizing: border-box;
+}
+
+#camera-video {
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #000;
+}
+
+.camera-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.camera-buttons button {
+  min-height: 44px;
+}
+
+#selected-image-name {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+@media (max-width: 599px) {
+  #camera-container {
+    padding: 10px;
+  }
+
+  #camera-video {
+    max-height: 400px;
+  }
+
+  .camera-buttons {
+    gap: 8px;
+  }
+
+  .camera-buttons button {
+    min-height: 42px;
+    font-size: 14px;
+  }
+}
