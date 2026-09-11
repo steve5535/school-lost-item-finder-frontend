@@ -285,3 +285,28 @@ body:has(#temporary-item-register-form) main > p {
     font-size: 14px;
   }
 }
+
+.form-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-buttons button,
+.form-buttons .cancel-button {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.form-buttons .cancel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  text-decoration: none;
+  box-sizing: border-box;
+}
