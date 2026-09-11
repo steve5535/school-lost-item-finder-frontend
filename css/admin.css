@@ -221,3 +221,42 @@ body:has(#admin-login-form) h1 {
     font-size: 26px;
   }
 }
+
+.form-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.form-buttons button,
+.form-buttons .cancel-button {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.form-buttons .cancel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+#edit-camera-container {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+#edit-camera-video {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#edit-camera-container .camera-buttons {
+  width: 100%;
+  margin-top: 10px;
+}

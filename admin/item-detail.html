@@ -53,15 +53,52 @@
           </textarea>
           <label for="edit-item-place">찾은 장소</label>
           <input id="edit-item-place" name="itemPlace" type="text" required />
-          <label for="edit-item-img">분실물 사진</label>
-          <input
-            id="edit-item-img"
-            name="itemImg"
-            type="file"
-            accept="image/*"
-          />
-          <button type="submit">수정 완료</button>
-          <button id="cancel-edit-button" type="button">취소</button>
+          <label>분실물 사진</label>
+          <div class="image-mode-tabs">
+            <button
+              type="button"
+              id="edit-file-mode-button"
+              class="image-mode-tab active"
+            >
+              📁 파일 선택
+            </button>
+            <button
+              type="button"
+              id="edit-camera-mode-button"
+              class="image-mode-tab"
+            >
+              📷 사진 찍기
+            </button>
+          </div>
+          <div id="edit-file-mode-container">
+            <input
+              id="edit-item-img"
+              name="itemImg"
+              type="file"
+              accept="image/*"
+            />
+          </div>
+          <div id="edit-camera-container" hidden>
+            <video id="edit-camera-video" autoplay playsinline></video>
+            <div class="camera-buttons">
+              <button type="button" id="edit-take-picture-button">
+                📸 촬영
+              </button>
+              <button type="button" id="edit-close-camera-button">취소</button>
+            </div>
+          </div>
+          <canvas id="edit-camera-canvas" hidden></canvas>
+          <div id="edit-image-preview-container" hidden>
+            <img id="edit-image-preview" alt="선택한 사진 미리보기" />
+            <p id="edit-selected-image-name"></p>
+            <button type="button" id="edit-remove-image-button">
+              사진 삭제
+            </button>
+          </div>
+          <div class="form-buttons">
+            <button type="submit">수정 완료</button>
+            <a href="/index.html" class="cancel-button">취소</a>
+          </div>
         </form>
       </section>
     </main>
