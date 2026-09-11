@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cameraCanvas = document.querySelector("#camera-canvas");
     const selectedImageName = document.querySelector("#selected-image-name");
     const itemImg = document.querySelector("#item-img");
-    const cancelFileButton = document.querySelector("#cancel-file-button");
     const imagePreviewContainer = document.querySelector("#image-preview-container");
     const imagePreview = document.querySelector("#image-preview");
     const removeImageButton = document.querySelector("#remove-image-button");
@@ -41,15 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const file = itemImg.files[0];
 
             cameraFile = null;
-            cancelFileButton.hidden = false;
 
             showImagePreview(file);
         }
-    });
-
-    cancelFileButton?.addEventListener("click", () => {
-        itemImg.value = "";
-        cancelFileButton.hidden = true;
     });
 
     removeImageButton?.addEventListener("click", () => {
