@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeCameraButton = document.querySelector("#close-camera-button");
     const cameraCanvas = document.querySelector("#camera-canvas");
     const selectedImageName = document.querySelector("#selected-image-name");
+    const itemImg = document.querySelector("#item-img");
+    const cancelFileButton = document.querySelector("#cancel-file-button");
+    const imagePreviewContainer = document.querySelector("#image-preview-container");
+    const imagePreview = document.querySelector("#image-preview");
+    const removeImageButton = document.querySelector("#remove-image-button");
 
     let cameraStream = null;
     let cameraFile = null;
@@ -29,6 +34,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fileModeButton.classList.add("active");
         cameraModeButton.classList.remove("active");
+    });
+
+    itemImg?.addEventListener("change", () => {
+        if (itemImg.files.length > 0) {
+            const file = itemImg.files[0];
+
+            cameraFile = null;
+            cancelFileButton.hidden = false;
+
+            showImagePreview(file);
+        }
+    });
+
+    cancelFileButton?.addEventListener("click", () => {
+        itemImg.value = "";
+        cancelFileButton.hidden = true;
+    });
+
+    removeImageButton?.addEventListener("click", () => {
+        itemImg.value = "";
+        cameraFile = null;
+
+        imagePreview.src = "";
+        imagePreviewContainer.hidden = true;
+        selectedImageName.textContent = "";
+
+        cancelFileButton.hidden = true;
     });
 
 
@@ -98,11 +130,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-            selectedImageName.textContent = cameraFile.name;
+            showImagePreview(cameraFile);
 
             stopCamera();
         }, "image/jpeg", 0.9);
     });
+
+    function showImagePreview(file) {
+        if (!file) return;
+
+        const imageUrl = URL.createObjectURL(file);
+
+        imagePreview.src = imageUrl;
+        imagePreviewContainer.hidden = false;
+        selectedImageName.textContent = file.name;
+    }
 
     function stopCamera() {
         if (cameraStream) {

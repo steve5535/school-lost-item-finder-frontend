@@ -42,6 +42,9 @@
         </div>
         <div id="file-mode-container">
           <input id="item-img" name="itemImg" type="file" accept="image/*" />
+          <button type="button" id="cancel-file-button" hidden>
+            사진 선택 취소
+          </button>
         </div>
         <div id="camera-container" hidden>
           <video id="camera-video" autoplay playsinline></video>
@@ -52,7 +55,11 @@
           </div>
         </div>
         <canvas id="camera-canvas" hidden></canvas>
-        <p id="selected-image-name"></p>
+        <div id="image-preview-container" hidden>
+          <img id="image-preview" alt="선택한 사진 미리보기" />
+          <p id="selected-image-name"></p>
+          <button type="button" id="remove-image-button">사진 삭제</button>
+        </div>
         <button type="submit">등록하기</button><a href="/index.html">취소</a>
       </form>
     </main>
