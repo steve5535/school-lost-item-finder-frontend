@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const takenList = document.querySelector("#taken-item-list");
     const searchForm = document.querySelector("#admin-search-form");
     const searchInput = searchForm?.querySelector("input");
+    const studentAddForm = document.querySelector("#student-add-form");
+    const studentNumberInput = document.querySelector("#student-number");
+    const studentNameInput = document.querySelector("#student-name");
+    const studentExcelForm = document.querySelector("#student-excel-form");
+    const studentExcelInput = document.querySelector("#student-excel");
 
     async function loadItems(keyword = "") {
         try {
@@ -141,6 +146,58 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchForm?.addEventListener("submit", event => {
         event.preventDefault();
         loadItems(searchInput?.value || "");
+    });
+
+    studentAddForm?.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const studentNumber = studentNumberInput.value.trim();
+        const studentName = studentNameInput.value.trim();
+
+        try {
+            await apiFetch("/student", {
+                method: "POST",
+                body: JSON.stringify({
+                    studentNumber: Number(studentNumber),
+                    studentName: studentName
+                })
+            });
+
+            alert("학생이 추가되었습니다.");
+
+            studentAddForm.reset();
+
+        } catch (error) {
+            showError(error);
+        }
+    });
+
+    studentExcelForm?.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const file = studentExcelInput.files[0];
+
+        if (!file) {
+            alert("엑셀 파일을 선택해주세요.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            await apiFetch("/student/excel-upload", {
+                method: "POST",
+                body: formData
+            });
+
+            alert("학생 명단이 업로드되었습니다.");
+
+            studentExcelForm.reset();
+
+        } catch (error) {
+            showError(error);
+        }
     });
 
     document.querySelector("#logout-button")?.addEventListener("click", logoutAdmin);
