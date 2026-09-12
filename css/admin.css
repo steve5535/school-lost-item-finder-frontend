@@ -260,3 +260,64 @@ body:has(#admin-login-form) h1 {
   width: 100%;
   margin-top: 10px;
 }
+
+#student-management {
+  margin-top: 28px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+#student-management h2 {
+  margin-bottom: 24px;
+  font-size: 21px;
+}
+
+#student-excel-form,
+#student-add-form {
+  display: grid;
+  gap: 10px;
+}
+
+#student-excel-form label,
+#student-add-form label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#student-excel-form input[type="file"],
+#student-add-form input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#student-excel-form button,
+#student-add-form button {
+  width: fit-content;
+  margin-top: 6px;
+}
+
+#student-management hr {
+  margin: 28px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 599px) {
+  #student-management {
+    margin-top: 20px;
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  #student-management h2 {
+    font-size: 19px;
+  }
+
+  #student-excel-form button,
+  #student-add-form button {
+    width: 100%;
+  }
+}
