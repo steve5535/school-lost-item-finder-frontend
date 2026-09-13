@@ -14,10 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            await apiFetch("/login", {
+            const data = await apiFetch("/login", {
                 method: "POST",
                 body: JSON.stringify({ userName, password })
             });
+
+            localStorage.setItem("token", data);
 
             redirectAfterLogin();
         } catch (error) {

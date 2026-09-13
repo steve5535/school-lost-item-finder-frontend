@@ -2,13 +2,16 @@ const API_BASE_URL = "https://deposits-chain-airlines-trust.trycloudflare.com";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
+    const token = localStorage.getItem("token");
 
     const config = {
-        credentials: "include",
         ...options,
         headers: {
             ...(!isFormData && options.body
                 ? { "Content-Type": "application/json" }
+                : {}),
+            ...(token
+                ? { "Authorization": `Bearer ${token}` }
                 : {}),
             ...(options.headers || {})
         }
@@ -106,12 +109,13 @@ function setImage(selector, src, alt = "") {
 }
 
 function redirectAfterLogin() {
-    localStorage.setItem("adminLoggedIn", "true");
     location.href = "/admin/index.html";
 }
 
 function requireAdmin() {
-    if (localStorage.getItem("adminLoggedIn") !== "true") {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
         location.replace("/admin/login.html");
         return false;
     }
@@ -120,6 +124,6 @@ function requireAdmin() {
 }
 
 function logoutAdmin() {
-    localStorage.removeItem("adminLoggedIn");
+    localStorage.removeItem("token");
     location.href = "/admin/login.html";
 }
