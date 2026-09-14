@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    if (!requireAdmin()) return;
+    if (!(await requireAdmin())) return;
 
     const id = new URLSearchParams(location.search).get("id");
     if (!id) return showError(new Error("임시 물건 번호가 없습니다."));

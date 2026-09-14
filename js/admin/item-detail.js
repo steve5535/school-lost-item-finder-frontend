@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    if (!requireAdmin()) return;
+    if (!(await requireAdmin())) return;
 
     const id = new URLSearchParams(location.search).get("id");
     const cancelButton = document.querySelector("#cancel-take-button");

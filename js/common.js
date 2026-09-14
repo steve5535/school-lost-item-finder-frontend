@@ -112,7 +112,7 @@ function redirectAfterLogin() {
     location.href = "/admin/index.html";
 }
 
-function requireAdmin() {
+async function requireAdmin() {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -120,7 +120,14 @@ function requireAdmin() {
         return false;
     }
 
-    return true;
+    try {
+        await apiFetch("/auth/check");
+        return true;
+    } catch (error) {
+        localStorage.removeItem("token");
+        location.replace("/admin/login.html");
+        return false;
+    }
 }
 
 function logoutAdmin() {

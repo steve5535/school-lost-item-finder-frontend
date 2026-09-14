@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    if (!requireAdmin()) return;
+    if (!(await requireAdmin())) return;
 
     const itemList = document.querySelector("#admin-item-list");
     const temporaryList = document.querySelector("#temporary-item-list");
