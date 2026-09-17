@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://carmen-graph-ist-fuzzy.trycloudflare.com";
+const API_BASE_URL = "https://nutshell-falcon-widget.ngrok-free.dev";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
