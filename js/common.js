@@ -88,11 +88,11 @@ function setText(selector, value) {
 }
 
 function getImageUrl(src) {
-    if (!src) {
-        return "";
-    }
+    if (!src) return "";
 
-    return `${API_BASE_URL}${src}`;
+    const url = `${API_BASE_URL}${src}`;
+
+    return url + (url.includes("?") ? "&" : "?") + "ngrok-skip-browser-warning=true";
 }
 
 function setImage(selector, src, alt = "") {
