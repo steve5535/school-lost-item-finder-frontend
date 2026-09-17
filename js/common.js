@@ -13,6 +13,7 @@ async function apiFetch(path, options = {}) {
             ...(token
                 ? { "Authorization": `Bearer ${token}` }
                 : {}),
+            "ngrok-skip-browser-warning": "true",
             ...(options.headers || {})
         }
     };
