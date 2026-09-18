@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://nutshell-falcon-widget.ngrok-free.dev";
+const API_BASE_URL = "https://api.cms-lost-item-finder.date";
 
 async function apiFetch(path, options = {}) {
     const isFormData = options.body instanceof FormData;
@@ -13,7 +13,6 @@ async function apiFetch(path, options = {}) {
             ...(token
                 ? { "Authorization": `Bearer ${token}` }
                 : {}),
-            "ngrok-skip-browser-warning": "true",
             ...(options.headers || {})
         }
     };
@@ -92,7 +91,7 @@ function getImageUrl(src) {
 
     const url = `${API_BASE_URL}${src}`;
 
-    return url + (url.includes("?") ? "&" : "?") + "ngrok-skip-browser-warning=true";
+    return url;
 }
 
 function setImage(selector, src, alt = "") {
