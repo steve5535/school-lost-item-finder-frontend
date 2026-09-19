@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     itemDetail?.addEventListener("input", () => {
         itemDetailCount.textContent =
-            `남은 글자 수${Math.max(0, itemDetail.maxLength - itemDetail.value.length)}자`;
+            `남은 글자 수: ${Math.max(0, itemDetail.maxLength - itemDetail.value.length)}자`;
     });
 
     itemPlace?.addEventListener("input", () => {
         itemPlaceCount.textContent =
-            `남은 글자 수${Math.max(0, itemPlace.maxLength - itemPlace.value.length)}자`;
+            `남은 글자 수: ${Math.max(0, itemPlace.maxLength - itemPlace.value.length)}자`;
     });
 
     let cameraStream = null;

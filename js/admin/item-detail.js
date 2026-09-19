@@ -16,6 +16,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     const editImagePreview = document.querySelector("#edit-image-preview");
     const editSelectedImageName = document.querySelector("#edit-selected-image-name");
     const editRemoveImageButton = document.querySelector("#edit-remove-image-button");
+    const itemNameCount = document.querySelector("#item-name-count");
+    const itemDetailCount = document.querySelector("#item-detail-count");
+    const itemPlaceCount = document.querySelector("#item-place-count");
+    const form = document.querySelector("#edit-item-form");
+    const itemName = form?.querySelector('[name="itemName"]');
+    const itemDetail = form?.querySelector('[name="itemDetail"]');
+    const itemPlace = form?.querySelector('[name="itemPlace"]');
+
+    itemName?.addEventListener("input", () => {
+        itemNameCount.textContent =
+            `남은 글자 수: ${Math.max(0, itemName.maxLength - itemName.value.length)}자`;
+    });
+
+    itemDetail?.addEventListener("input", () => {
+        itemDetailCount.textContent =
+            `남은 글자 수: ${Math.max(0, itemDetail.maxLength - itemDetail.value.length)}자`;
+    });
+
+    itemPlace?.addEventListener("input", () => {
+        itemPlaceCount.textContent =
+            `남은 글자 수: ${Math.max(0, itemPlace.maxLength - itemPlace.value.length)}자`;
+    });
 
     let editCameraStream = null;
     let editCameraFile = null;
@@ -257,6 +279,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             document.querySelector("#edit-item-place").value =
                 item.itemPlace ?? "";
+
+            itemName?.dispatchEvent(new Event("input"));
+            itemDetail?.dispatchEvent(new Event("input"));
+            itemPlace?.dispatchEvent(new Event("input"));
 
             if (item.itemImg) {
                 editImagePreview.src = getImageUrl(item.itemImg);

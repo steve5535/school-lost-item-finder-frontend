@@ -48,12 +48,32 @@
         <h2>분실물 수정</h2>
         <form id="edit-item-form">
           <label for="edit-item-name">분실물 이름</label>
-          <input id="edit-item-name" name="itemName" type="text" required />
+          <input
+            id="edit-item-name"
+            name="itemName"
+            type="text"
+            maxlength="20"
+            required
+          />
+          <p id="item-name-count">남은 글자 수: 20자</p>
           <label for="edit-item-detail">분실물 특징</label>
-          <textarea id="edit-item-detail" name="itemDetail" required>
+          <textarea
+            id="edit-item-detail"
+            name="itemDetail"
+            maxlength="200"
+            required
+          ></textarea>
+          <p id="item-detail-count">남은 글자 수: 200자</p>
           </textarea>
           <label for="edit-item-place">찾은 장소</label>
-          <input id="edit-item-place" name="itemPlace" type="text" required />
+          <input
+            id="edit-item-place"
+            name="itemPlace"
+            type="text"
+            maxlength="50"
+            required
+          />
+          <p id="item-place-count">남은 글자 수: 50자</p>
           <label>분실물 사진</label>
           <div class="image-mode-tabs">
             <button
