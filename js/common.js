@@ -17,7 +17,15 @@ async function apiFetch(path, options = {}) {
         }
     };
 
-    const response = await fetch(`${API_BASE_URL}${path}`, config);
+    let response;
+
+    try {
+        response = await fetch(`${API_BASE_URL}${path}`, config);
+    } catch (error) {
+        throw new Error(
+            "서버에 연결할 수 없습니다.\n잠시 후 다시 시도해주세요."
+        );
+    }
 
     const contentType = response.headers.get("content-type") || "";
 
