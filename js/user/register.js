@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData
             });
 
-            alert("분실물이 요청이 완료되었습니다.");
+            alert("분실물 등록 요청이 완료되었습니다.");
             location.href = "/index.html";
         } catch (error) {
             showError(error);

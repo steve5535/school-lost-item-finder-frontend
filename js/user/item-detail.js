@@ -31,6 +31,20 @@ function openTakeModal(itemId) {
         return;
     }
 
+    const studentNumberInput = form.querySelector('[name="studentNumber"]');
+    const message = form.querySelector("#student-number-message")
+    studentNumberInput.addEventListener("keydown", (e) => {
+        if (studentNumberInput.value.length >= 5 && /^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+            message.textContent = "학번은 5글자까지만 입력할 수 있습니다.";
+        }
+    })
+    studentNumberInput.addEventListener("input", () => {
+        if (studentNumberInput.value.length < 5) {
+            message.textContent = "";
+        }
+    });
+
     const modal = form.closest("dialog");
     modal?.showModal();
 
