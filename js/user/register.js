@@ -15,6 +15,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const imagePreviewContainer = document.querySelector("#image-preview-container");
     const imagePreview = document.querySelector("#image-preview");
     const removeImageButton = document.querySelector("#remove-image-button");
+    const itemNameCount = document.querySelector("#item-name-count");
+    const itemDetailCount = document.querySelector("#item-detail-count");
+    const itemPlaceCount = document.querySelector("#item-place-count");
+    const itemName = form.querySelector('[name="itemName"]');
+    const itemDetail = form.querySelector('[name="itemDetail"]');
+    const itemPlace = form.querySelector('[name="itemPlace"]');
+
+    itemName?.addEventListener("input", () => {
+        itemNameCount.textContent =
+            `남은 글자 수: ${Math.max(0, itemName.maxLength - itemName.value.length)}자`;
+    });
+
+    itemDetail?.addEventListener("input", () => {
+        itemDetailCount.textContent =
+            `남은 글자 수${Math.max(0, itemDetail.maxLength - itemDetail.value.length)}자`;
+    });
+
+    itemPlace?.addEventListener("input", () => {
+        itemPlaceCount.textContent =
+            `남은 글자 수${Math.max(0, itemPlace.maxLength - itemPlace.value.length)}자`;
+    });
 
     let cameraStream = null;
     let cameraFile = null;

@@ -260,8 +260,8 @@ select:disabled {
 }
 
 textarea {
-  min-height: 136px;
-  resize: vertical;
+  min-height: 100px;
+  resize: none;
 }
 
 input[type="file"] {
@@ -455,6 +455,7 @@ button[value="cancel"],
   letter-spacing: -0.035em;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .item-card p,
@@ -476,6 +477,7 @@ button[value="cancel"],
   font-size: 13px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .item-card p:nth-of-type(2),
