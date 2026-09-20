@@ -140,5 +140,5 @@ async function requireAdmin() {
 
 function logoutAdmin() {
     localStorage.removeItem("token");
-    location.href = "/admin/login.html";
+    location.href = "/index.html";
 }

@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const list = document.querySelector("#item-list");
     const searchForm = document.querySelector("#search-form");
     const searchInput = searchForm?.querySelector("input");
+    const adminPageLink = document.querySelector("#admin-page-link");
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        adminPageLink.textContent = "관리자 화면";
+        adminPageLink.href = "/admin/index.html";
+    } else {
+        adminPageLink.textContent = "관리자 로그인";
+        adminPageLink.href = "/admin/login.html";
+    }
 
     async function loadItems(keyword = "") {
         try {
