@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const searchForm = document.querySelector("#search-form");
     const searchInput = searchForm?.querySelector("input");
     const adminPageLink = document.querySelector("#admin-page-link");
-    const token = localStorage.getItem("token");
 
-    if (token) {
+    if (isTokenValid()) {
         adminPageLink.textContent = "관리자 화면";
         adminPageLink.href = "/admin/index.html";
     } else {
@@ -73,4 +72,17 @@ function escapeHtml(value) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+}
+
+function isTokenValid() {
+    const token = localStorage.getItem("token");
+
+    if (!token) return false;
+
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        return payload.exp * 1000 > Date.now();
+    } catch {
+        return false;
+    }
 }
