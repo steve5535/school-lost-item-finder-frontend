@@ -183,8 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
         cameraModeButton.classList.remove("active");
     });
 
+    let isSubmitting = false;
+
     form.addEventListener("submit", async event => {
         event.preventDefault();
+
+        if (isSubmitting) return;
+        isSubmitting = true;
 
         const selectedFile =
             cameraFile || form.querySelector('[name="itemImg"]')?.files[0];
