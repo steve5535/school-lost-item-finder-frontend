@@ -316,3 +316,29 @@ body:has(#admin-login-form) h1 {
     width: 100%;
   }
 }
+
+#delete-all-temporary-button {
+  width: fit-content;
+  margin-top: 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+#delete-all-temporary-button:hover {
+  background: var(--danger);
+  color: white;
+}
+
+#delete-all-temporary-button:active {
+  transform: translateY(1px);
+}

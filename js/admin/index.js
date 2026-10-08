@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const studentNameInput = document.querySelector("#student-name");
     const studentExcelForm = document.querySelector("#student-excel-form");
     const studentExcelInput = document.querySelector("#student-excel");
+    const deleteAllTemporaryButton = document.querySelector("#delete-all-temporary-button");
+
+    let temporaryItems = [];
 
     async function loadItems(keyword = "") {
         try {
@@ -47,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const response = await apiFetch("/temporary-item");
             const items = Array.isArray(response) ? response : [];
 
-            const temporaryItems = items.filter(item => item.isAccept === null);
+            temporaryItems = items.filter(item => item.isAccept === null);
             const declinedItems = items.filter(item => item.isAccept === false);
 
             renderTemporaryItems(temporaryItems);
@@ -142,6 +145,30 @@ document.addEventListener("DOMContentLoaded", async () => {
             declinedList.innerHTML = "<p>거절된 분실물이 없습니다.</p>";
         }
     }
+
+    deleteAllTemporaryButton?.addEventListener("click", async () => {
+        if (temporaryItems.length === 0) {
+            alert("임시 저장소가 비어있습니다.");
+            return;
+        }
+
+        if (!confirm("임시 분실물을 모두 삭제하시겠습니까?")) {
+            return;
+        }
+
+        try {
+            await apiFetch("/temporary-item/all", {
+                method: "DELETE"
+            });
+
+            alert("임시 분실물이 모두 삭제되었습니다.");
+
+            await loadTemporaryItems();
+
+        } catch (error) {
+            showError(error);
+        }
+    });
 
     searchForm?.addEventListener("submit", event => {
         event.preventDefault();
